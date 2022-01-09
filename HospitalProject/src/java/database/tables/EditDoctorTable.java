@@ -208,5 +208,63 @@ public class EditDoctorTable {
             Logger.getLogger(EditDoctorTable.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+    public ArrayList<Doctor> getAllDoctors() throws SQLException, ClassNotFoundException{
+       Connection con = DB_Connection.getConnection();
+       Statement stm = con.createStatement();
+        
+       ArrayList<Doctor> list = new ArrayList<Doctor>();
+       Doctor dummy = new Doctor();
+       
+       String query = "SELECT * FROM `users`";
+       System.out.println(query);
+       
+       ResultSet rs;
+       
+       rs = stm.executeQuery(query);
+       
+       while(rs.next()){
+           dummy.setUsername(rs.getString("username"));
+           dummy.setPassword(rs.getString("password"));
+           dummy.setEmail(rs.getString("email"));
+           dummy.setFirstname(rs.getString("firstname"));
+           dummy.setLastname(rs.getString("lastname"));
+           dummy.setBirthdate(rs.getString("birthdate"));
+           dummy.setGender(rs.getString("gender"));
+           dummy.setAmka(rs.getString("amka"));
+           dummy.setCountry(rs.getString("country"));
+           dummy.setCity(rs.getString("city"));
+           dummy.setAddress(rs.getString("address"));
+           dummy.setLon(rs.getDouble("lon"));
+           dummy.setLat(rs.getDouble("lat"));
+           dummy.setTelephone(rs.getString("telephone"));
+           dummy.setHeight(rs.getInt("height"));
+           dummy.setWeight(rs.getDouble("weight"));
+           dummy.setBloodDonor(rs.getInt("blooddonor"));
+           dummy.setBloodtype(rs.getString("bloodtype"));
+           //doc info
+           dummy.setDoctor_id(rs.getInt("doctor_id"));
+           dummy.setDoctor_info(rs.getString("doctor_info"));
+           dummy.setSpecialty(rs.getString("specialty"));
+           dummy.setCertified(rs.getInt("certified"));
+          
+           list.add(dummy);
+       }
+       
+//        try {
+//            rs = stm.executeQuery(query);
+//            rs.next();
+////            String json=DB_Connection.getResultsToJSON(rs);
+////            return json;
+//        } catch (Exception e) {
+//            System.err.println("Got an exception! ");
+//            System.err.println(e.getMessage());
+//        }
+       
+       stm.close();
+       
+       return list;
+    }
 
 }
