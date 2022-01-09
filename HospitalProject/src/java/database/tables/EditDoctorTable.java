@@ -215,7 +215,6 @@ public class EditDoctorTable {
        Statement stm = con.createStatement();
         
        ArrayList<Doctor> list = new ArrayList<Doctor>();
-       Doctor dummy = new Doctor();
        
        String query = "SELECT * FROM `users`";
        System.out.println(query);
@@ -225,6 +224,8 @@ public class EditDoctorTable {
        rs = stm.executeQuery(query);
        
        while(rs.next()){
+           Doctor dummy = new Doctor();
+           
            dummy.setUsername(rs.getString("username"));
            dummy.setPassword(rs.getString("password"));
            dummy.setEmail(rs.getString("email"));

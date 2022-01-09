@@ -222,10 +222,10 @@ public class EditSimpleUserTable {
            dummy.setBloodtype(rs.getString("bloodtype"));
            
            list.add(dummy);
-           for( int j=0; j<=i; j++) {
-               System.out.println("Edit.Username: " + list.get(i).getUsername());
-               System.out.println("Edit.Username: " + list.get(i));
-           }
+//           for( int j=0; j<=i; j++) {
+//               System.out.println("Edit.Username: " + list.get(i).getUsername());
+//               System.out.println("Edit.Username: " + list.get(i));
+//           }
 //           System.out.println("Edit.Username: " + list.get(i).getUsername());
            i++;
        }

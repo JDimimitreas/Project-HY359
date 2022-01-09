@@ -50,15 +50,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 function request() {
     console.log("request");
     $.ajax({
-                    url: 'TestServlet',
-                      type: "GET",
+            url: 'TestServlet',
+            type: "GET",
             cache: false,
-                       success: function(response) {
-//         $("#main-container").html(createTableFromJSON(JSON.parse(response)));
-                   alert('success');
-                   },
-                   error: function() {
-                       alert("unsuccessful");
+            success: function(response) {
+//            $("#main-container").innerhtml(createTableFromJSON(JSON.parse(response)));
+                    let result = JSON.parse(response);
+                    console.log("The username is: " + result.username);
+                    document.getElementById("main-container").innerText = JSON.stringify(response);
+                    alert('success');
+                   console.log(response);
+                },
+            error: function() {
+                   alert("unsuccessful");
     }
     });
 }

@@ -68,11 +68,46 @@ public class TestServlet extends HttpServlet {
             ArrayList<SimpleUser> list = new ArrayList<SimpleUser>();
             EditSimpleUserTable su = new EditSimpleUserTable();
             list = su.getAllUsers();
+            
+            String userJSON;
+            String responseJSON;
+            responseJSON = "[";
+            
+            
             for(int i=0; i<list.size(); i++){
                 System.out.println("I got from list: " + list.get(i).getUsername());
+                userJSON = "{\"username\":\"" + list.get(i).getUsername() + "\","
+                        + "\"email\":\"" + list.get(i).getEmail() + "\","
+                        + "\"password\":\"" + list.get(i).getPassword() + "\","
+                        + "\"firstname\":\"" + list.get(i).getFirstname() + "\","
+                        + "\"lastname\":\"" + list.get(i).getLastname() + "\","
+                        + "\"birthdate\":\"" + list.get(i).getBirthdate() + "\","
+                        + "\"gender\":\"" + list.get(i).getGender() + "\","
+                        + "\"amka\":\"" + list.get(i).getAmka() + "\","
+                        + "\"country\":\"" + list.get(i).getCountry() + "\","
+                        + "\"city\":\"" + list.get(i).getCity() + "\","
+                        + "\"address\":\"" + list.get(i).getAddress() + "\","
+                        + "\"lat\":\"35.3053121\",\"lon\":\"25.0722869\","
+                        + "\"telephone\":\"" + list.get(i).getTelephone() + "\","
+                        + "\"height\":\"" + list.get(i).getHeight() + "\","
+                        + "\"weight\":\"" + list.get(i).getWeight() + "\","
+                        + "\"blooddonor\":\"" + list.get(i).getBlooddonor() + "\","
+                        + "\"bloodtype\":\"" + list.get(i).getBloodtype() + "\"}";
+                responseJSON += userJSON;
+                if(list.size() != i + 1 ) {
+                    responseJSON += ',';
+                }
+//                response.getWriter().write(userJSON);
+                
             }
+            responseJSON += "]";
+            response.getWriter().write(responseJSON);
             
-//            System.out.println("I got from list: " + list.get(0).getUsername());
+            response.setStatus(201);
+            
+         
+
+            
             System.out.println("This is the size: " + list.size());
         } catch (SQLException ex) {
             Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
