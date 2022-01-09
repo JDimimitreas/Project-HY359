@@ -56,7 +56,7 @@ function request() {
             success: function(response) {
 //            $("#main-container").innerhtml(createTableFromJSON(JSON.parse(response)));
                     let result = JSON.parse(response);
-                    console.log("The username is: " + result.username);
+                    console.log("The username is: " + result[0].username);
                     document.getElementById("main-container").innerText = JSON.stringify(response);
                     alert('success');
                    console.log(response);
