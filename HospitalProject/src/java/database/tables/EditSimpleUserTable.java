@@ -191,7 +191,6 @@ public class EditSimpleUserTable {
        Statement stm = con.createStatement();
         
        ArrayList<SimpleUser> list = new ArrayList<SimpleUser>();
-       SimpleUser dummy = new SimpleUser();
        
        String query = "SELECT * FROM `users`";
        System.out.println(query);
@@ -200,7 +199,9 @@ public class EditSimpleUserTable {
        
        rs = stm.executeQuery(query);
        
+       int i = 0;
        while(rs.next()){
+           SimpleUser dummy = new SimpleUser();
            dummy.setUsername(rs.getString("username"));
            dummy.setPassword(rs.getString("password"));
            dummy.setEmail(rs.getString("email"));
@@ -219,8 +220,14 @@ public class EditSimpleUserTable {
            dummy.setWeight(rs.getDouble("weight"));
            dummy.setBloodDonor(rs.getInt("blooddonor"));
            dummy.setBloodtype(rs.getString("bloodtype"));
-                   
+           
            list.add(dummy);
+           for( int j=0; j<=i; j++) {
+               System.out.println("Edit.Username: " + list.get(i).getUsername());
+               System.out.println("Edit.Username: " + list.get(i));
+           }
+//           System.out.println("Edit.Username: " + list.get(i).getUsername());
+           i++;
        }
        
 //        try {

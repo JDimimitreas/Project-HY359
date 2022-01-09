@@ -68,9 +68,12 @@ public class TestServlet extends HttpServlet {
             ArrayList<SimpleUser> list = new ArrayList<SimpleUser>();
             EditSimpleUserTable su = new EditSimpleUserTable();
             list = su.getAllUsers();
-            System.out.println("I got from list: " + list.get(0).getUsername());
-            System.out.println("I got from list: " + list.get(1).getUsername());
-            System.out.println("I got from list: " + list.get(2).getUsername());
+            for(int i=0; i<list.size(); i++){
+                System.out.println("I got from list: " + list.get(i).getUsername());
+            }
+            
+//            System.out.println("I got from list: " + list.get(0).getUsername());
+            System.out.println("This is the size: " + list.size());
         } catch (SQLException ex) {
             Logger.getLogger(TestServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
