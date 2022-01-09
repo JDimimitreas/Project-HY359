@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mainClasses.Randevouz;
@@ -185,6 +186,42 @@ public class EditSimpleUserTable {
         }
     }
 
-   
+   public ArrayList<SimpleUser> getAllUsers() throws SQLException, ClassNotFoundException{
+       Connection con = DB_Connection.getConnection();
+       Statement stm = con.createStatement();
+        
+       ArrayList<SimpleUser> list = new ArrayList<SimpleUser>();
+       SimpleUser dummy = new SimpleUser();
+       
+       String query = "SELECT * FROM `users`";
+       System.out.println(query);
+       
+       ResultSet rs;
+       
+       rs = stm.executeQuery(query);
+       
+       while(rs.next()){
+           dummy.setUsername(rs.getString("username"));
+           dummy.setPassword(rs.getString("password"));
+           dummy.setEmail(rs.getString("email"));
+           dummy.setFirstname(rs.getString(""));
+                   
+           list.add(dummy);
+       }
+       
+//        try {
+//            rs = stm.executeQuery(query);
+//            rs.next();
+////            String json=DB_Connection.getResultsToJSON(rs);
+////            return json;
+//        } catch (Exception e) {
+//            System.err.println("Got an exception! ");
+//            System.err.println(e.getMessage());
+//        }
+       
+       stm.close();
+       
+       return null;
+   }
 
 }

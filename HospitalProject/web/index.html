@@ -544,7 +544,23 @@
             <script src="js/confirmLocation.js"></script>
             <script src="js/map.js"></script>
             <script src="js/SignUpRequest.js"></script>
+            <script src="js/logInRequest.js"></script>
+        </div>
+
+        <div id="main-container">
+            <form action="LogIn" id="logInForm" class="simple-form" autocomplete="on">
+                <div class="container">
+                    <header>
+                        <h2>Or Just LogIn...</h2>
+                    </header>
+                    <!-- Username -->
+                    <input type="text" id="username" class="longIn" placeholder="Enter Username" name="username" required/><br>
+                    <!-- Password -->
+                    <input type="password" id="psw" class="longIn" placeholder="Enter Password" name="psw" value="" required/>
+                    <br>
+                    <button type="submit" id="btn" class="registerbtn" >LogIn</button><br>
+                </div>
+            </form>
         </div>
     </body>
-
 </html> 

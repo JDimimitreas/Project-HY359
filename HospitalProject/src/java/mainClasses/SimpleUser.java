@@ -13,8 +13,6 @@ import mainClasses.User;
  * @author Mike
  */
 public class SimpleUser extends User{
-    
-    
 
     int user_id;
 
@@ -26,5 +24,4 @@ public class SimpleUser extends User{
         this.user_id = user_id;
     }
 
-    
 }
