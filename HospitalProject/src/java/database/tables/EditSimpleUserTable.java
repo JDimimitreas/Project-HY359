@@ -204,7 +204,21 @@ public class EditSimpleUserTable {
            dummy.setUsername(rs.getString("username"));
            dummy.setPassword(rs.getString("password"));
            dummy.setEmail(rs.getString("email"));
-           dummy.setFirstname(rs.getString(""));
+           dummy.setFirstname(rs.getString("firstname"));
+           dummy.setLastname(rs.getString("lastname"));
+           dummy.setBirthdate(rs.getString("birthdate"));
+           dummy.setGender(rs.getString("gender"));
+           dummy.setAmka(rs.getString("amka"));
+           dummy.setCountry(rs.getString("country"));
+           dummy.setCity(rs.getString("city"));
+           dummy.setAddress(rs.getString("address"));
+           dummy.setLon(rs.getDouble("lon"));
+           dummy.setLat(rs.getDouble("lat"));
+           dummy.setTelephone(rs.getString("telephone"));
+           dummy.setHeight(rs.getInt("height"));
+           dummy.setWeight(rs.getDouble("weight"));
+           dummy.setBloodDonor(rs.getInt("blooddonor"));
+           dummy.setBloodtype(rs.getString("bloodtype"));
                    
            list.add(dummy);
        }
@@ -221,7 +235,7 @@ public class EditSimpleUserTable {
        
        stm.close();
        
-       return null;
+       return list;
    }
 
 }

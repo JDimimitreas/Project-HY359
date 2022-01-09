@@ -8,6 +8,7 @@ import mainClasses.User;
 import mainClasses.SimpleUser;
 import database.tables.EditSimpleUserTable;
 import database.tables.EditDoctorTable;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
@@ -47,10 +48,10 @@ public class Admin extends User{
     }
     
     //Returns all simpleUsers
-    public ArrayList<SimpleUser> getSimpleUserList(){
+    public ArrayList<SimpleUser> getSimpleUserList() throws SQLException, ClassNotFoundException{
+        EditSimpleUserTable esut = new EditSimpleUserTable();
         
-        
-        return null;   
+        return esut.getAllUsers();   
     }
     
     //Returns all Doctors
