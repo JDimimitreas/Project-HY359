@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <!-- Meta tags -->
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta http-equiv="Content-Style-Type" content="text/css">
+        <meta name="description" content="Assignment 1">
+        <meta name="keywords" content="HTML,CSS">
+        <meta name="author" content="csd3619">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Title and Favicon -->
+        <title>Login</title>
+        <!-- <link rel='shortcut icon' type='image/x-icon' href='favicon.ico'> -->
+
+    <!-- Bootstrap CSS and Style CSS -->
+        <!--link rel="stylesheet" href="css/bootstrap.min.css"-->
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    </head>
+  
+    <body>
+    <!-- JQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+
+        <div id="main-container">
+            <form id="login" class="simple-form" autocomplete="on" onsubmit = 'return false;'>
+                <div class="container">
+                    <header>
+                        <h1>Log In Your Account</h1>
+                    </header>
+
+                <!-- Username -->
+                    <input type="text" id="username" class="longIn" placeholder="Enter Username" name="username" required/><br>
+
+                <!-- Password -->
+                    <input type="password" id="psw" class="longIn" placeholder="Enter Password" name="psw" value="" required/>
+                    <br>
+
+                    <hr>
+
+                    <p>Don't have an account? <a href="/HospitalProject/index.html">Sign Up</a>.</p>
+
+                <!-- Sign-Up button -->
+                    <button type="submit" id="btn" class="registerbtn">Log In</button><br>
+                </div>
+            </form>
+            <!-- Scripts -->
+            <script src="js/LogInRequest.js"></script>
+        </div>
+    </body>
+</html> 
