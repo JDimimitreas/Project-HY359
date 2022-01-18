@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mainClasses.SimpleUser;
@@ -108,6 +109,7 @@ public class EditDoctorTable {
         }
         return null;
     }
+    
 
     public String databaseToJSON(String username, String password) throws SQLException, ClassNotFoundException {
         Connection con = DB_Connection.getConnection();
