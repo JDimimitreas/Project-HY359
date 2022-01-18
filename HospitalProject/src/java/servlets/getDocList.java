@@ -39,40 +39,40 @@ public class getDocList extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException, ClassNotFoundException {
         
-        EditDoctorTable edt = new EditDoctorTable();
-        ArrayList<Doctor> doc_list = new ArrayList<Doctor>();
-        
-        doc_list = edt.databaseToDoctors();
-        
-        //Print docList
-        for( int i=0; i<doc_list.size(); i++){
-            Doctor dummy_doc = new Doctor();
-            dummy_doc = doc_list.get(i);
-            System.out.println("Doc_name: " + dummy_doc.getUsername());
-        }
-        
-        if( doc_list.size() > 0 ){
-//            request.setCharacterEncoding("utf8");
+//        EditDoctorTable edt = new EditDoctorTable();
+//        ArrayList<Doctor> doc_list = new ArrayList<Doctor>();
+//        
+//        doc_list = edt.databaseToDoctors();
+//        
+//        //Print docList
+//        for( int i=0; i<doc_list.size(); i++){
+//            Doctor dummy_doc = new Doctor();
+//            dummy_doc = doc_list.get(i);
+//            System.out.println("Doc_name: " + dummy_doc.getUsername());
+//        }
+//        
+//        if( doc_list.size() > 0 ){
+////            request.setCharacterEncoding("utf8");
+////            response.setContentType("application/json");
+////            String json = new Gson().toJson(doc_list);
+//            GsonBuilder gsonBuilder = new GsonBuilder();
+//            Gson gson = gsonBuilder.create();
+//            
+//            String JSONOBject = gson.toJson(doc_list);
+//            
+//            Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+//            String prettyJson = prettyGson.toJson(doc_list);
+//            
+//            System.out.println("this is the JSON\n" + prettyJson);
+//            
+//            response.setStatus(201);
+//            PrintWriter out = response.getWriter();
 //            response.setContentType("application/json");
-//            String json = new Gson().toJson(doc_list);
-            GsonBuilder gsonBuilder = new GsonBuilder();
-            Gson gson = gsonBuilder.create();
-            
-            String JSONOBject = gson.toJson(doc_list);
-            
-            Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            String prettyJson = prettyGson.toJson(doc_list);
-            
-            System.out.println("this is the JSON\n" + prettyJson);
-            
-            response.setStatus(201);
-            PrintWriter out = response.getWriter();
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            out.print(prettyJson);
-            response.getWriter().write(prettyJson);
-            out.flush();
-        }
+//            response.setCharacterEncoding("UTF-8");
+//            out.print(prettyJson);
+//            response.getWriter().write(prettyJson);
+//            out.flush();
+//        }
         
     }
 
@@ -88,13 +88,49 @@ public class getDocList extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         try {
-            processRequest(request, response);
+            EditDoctorTable edt = new EditDoctorTable();
+            ArrayList<Doctor> doc_list = new ArrayList<Doctor>();
+            
+            doc_list = edt.databaseToDoctors();
+            
+            //Print docList
+            for( int i=0; i<doc_list.size(); i++){
+                Doctor dummy_doc = new Doctor();
+                dummy_doc = doc_list.get(i);
+                System.out.println("Doc_name: " + dummy_doc.getUsername());
+            }
+            
+            if( doc_list.size() > 0 ){
+//            request.setCharacterEncoding("utf8");
+//            response.setContentType("application/json");
+//            String json = new Gson().toJson(doc_list);
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson gson = gsonBuilder.create();
+
+                String JSONOBject = gson.toJson(doc_list);
+
+                Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+                String prettyJson = prettyGson.toJson(doc_list);
+
+                System.out.println("this is the JSON\n" + prettyJson);
+
+                response.setStatus(200);
+                PrintWriter out = response.getWriter();
+                response.setContentType("application/json");
+                response.setCharacterEncoding("UTF-8");
+                out.print(prettyJson);
+                response.getWriter().write(prettyJson);
+                out.flush();
+            }
         } catch (SQLException ex) {
             Logger.getLogger(getDocList.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(getDocList.class.getName()).log(Level.SEVERE, null, ex);
         }
+        
+        
     }
 
     /**
