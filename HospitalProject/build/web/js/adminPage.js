@@ -48,8 +48,6 @@ function deleteDoctor(doctor_id){
     var data = {
         "doctor_id": doctor_id
     };
-    
-    
     console.log(JSON.stringify(data));
     
     $.ajax({
@@ -58,9 +56,17 @@ function deleteDoctor(doctor_id){
        data: "doctor_id=" + doctor_id,
        success: function(success) {
            alert("DeleteDoctor Successful id: " +doctor_id);
+           //rebuild doctors list
+           //reset old list first
+           let html_list = document.getElementById("doc_list");
+           html_list.innerHTML = "";
+           
+           getDocList();
+           return true;
        },
        error: function(e) {
            console.log("Couldnt delete Doctor with id:" + doctor_id);
+           return false;
        }
     });
 }
