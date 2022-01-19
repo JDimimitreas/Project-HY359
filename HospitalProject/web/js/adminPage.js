@@ -22,22 +22,11 @@ function showDoctorsList(response){
   let html_list = document.getElementById("doc_list");
   
   for(let i=0; i < response.length; i++){
-    // html_list.innerHTML += "<div><input type='text' id='doc_id' name='doc_id' value='"+ response[i].doctor_id +"'>" + 
-    // "<button id='del_btn'>Delete</button>" + 
-    // "<button id='verify_btn'>Verify</button></div><br>"
-    // html_list.innerHTML += "<div>"
-    // +"<div>Doc_Id: </div>"
-    // +"<div id='doc_id'>"+ response[i].doctor_id +"</div> <div>Doc Username: </div> <div id='doc_username'>"+ response[i].username +"</div> <div>Certified: </div> <div id='certified'>"+ 
-    // isCertified(response[i].certified) +"</div>"
-    // +"<button id='del_btn'>Delete</button>"
-    // +"<button id='verify_btn'>Verify</button>"
-    // + "</div>";
-
     html_list.innerHTML += "<div>"
     +"Doc_Id<input type='text' id='doc_id' name='doc_id' value='"+ response[i].doctor_id +"' size='3'>"
     +"Doc_username<input type='text' id='doc_username' name='doc_username' size='10' value='"+ response[i].username +"'>"
     +"Certified:" + isCertified(response[i].certified)
-    +" <button id='del_btn' onclick='deleteDoctor()'>Delete</button>"
+    +" <button id='del_btn' onclick='deleteDoctor("+ response[i].doctor_id +")'>Delete</button>"
     +"<button id='certify_btn' onclick='certifyDoctor()'>certify</button>"
     +"</div><br>"
     
@@ -51,4 +40,27 @@ function isCertified(response){
   } else if(response === 0){
     return 'No';
   }
+}
+
+function deleteDoctor(doctor_id){
+  console.log("Deleting doctor with id:" + doctor_id);
+    
+    var data = {
+        "doctor_id": doctor_id
+    };
+    
+    
+    console.log(JSON.stringify(data));
+    
+    $.ajax({
+       type: 'POST',
+       url: 'DeleteDoctor',
+       data: "doctor_id=" + doctor_id,
+       success: function(success) {
+           alert("DeleteDoctor Successful id: " +doctor_id);
+       },
+       error: function(e) {
+           console.log("Couldnt delete Doctor with id:" + doctor_id);
+       }
+    });
 }

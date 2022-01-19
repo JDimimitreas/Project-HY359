@@ -87,6 +87,25 @@ public class EditDoctorTable {
         }
         return null;
     }
+    
+    public Doctor databaseToDoctor(String doctor_id) throws SQLException, ClassNotFoundException {
+        Connection con = DB_Connection.getConnection();
+        Statement stmt = con.createStatement();
+
+        ResultSet rs;
+        try {
+            rs = stmt.executeQuery("SELECT * FROM doctors WHERE doctor_id = '" + doctor_id + "'");
+            rs.next();
+            String json = DB_Connection.getResultsToJSON(rs);
+            Gson gson = new Gson();
+            Doctor doc = gson.fromJson(json, Doctor.class);
+            return doc;
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
 
     public ArrayList<Doctor> databaseToDoctors() throws SQLException, ClassNotFoundException {
         Connection con = DB_Connection.getConnection();
@@ -128,6 +147,25 @@ public class EditDoctorTable {
         return null;
     }
 
+    public String databaseToJSON(String doctor_id) throws SQLException, ClassNotFoundException {
+        Connection con = DB_Connection.getConnection();
+        Statement stmt = con.createStatement();
+
+        ResultSet rs;
+        try {
+            rs = stmt.executeQuery("SELECT * FROM doctors WHERE doctor_id = '" + doctor_id + "'");
+            rs.next();
+            String json = DB_Connection.getResultsToJSON(rs);
+            return json;
+        } catch (Exception e) {
+            System.err.println("Got an exception! ");
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
+    
+    
     public void createDoctorTable() throws SQLException, ClassNotFoundException {
 
         Connection con = DB_Connection.getConnection();
@@ -268,6 +306,36 @@ public class EditDoctorTable {
        stm.close();
        
        return list;
+    }
+    
+    public boolean DeleteDoctor(String doctor_id) {
+        try {
+            String query = "DELETE FROM `doctors` WHERE doctor_id = " + doctor_id;
+            Connection con = DB_Connection.getConnection();
+            Statement stmt = con.createStatement();
+            
+            //First look up for the doctor
+            Doctor dummy_doc;
+            
+            dummy_doc = this.databaseToDoctor(doctor_id);
+            if( dummy_doc == null ) {
+                System.out.println("Error, doctor with id: " + doctor_id + "does not exist, return false...");
+                stmt.close();
+                con.close();
+                return false;
+            } else if ( dummy_doc != null ){
+                stmt.execute(query);
+                stmt.close();
+                con.close();
+                return true;
+            }
+        
+        } catch (SQLException ex) {
+            Logger.getLogger(EditDoctorTable.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(EditDoctorTable.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         return false;
     }
 
 }
