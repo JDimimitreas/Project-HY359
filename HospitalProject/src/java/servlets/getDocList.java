@@ -114,15 +114,14 @@ public class getDocList extends HttpServlet {
                 Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
                 String prettyJson = prettyGson.toJson(doc_list);
 
-                System.out.println("this is the JSON\n" + prettyJson);
-
                 response.setStatus(200);
                 PrintWriter out = response.getWriter();
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                out.print(prettyJson);
+//                out.print(prettyJson);
                 response.getWriter().write(prettyJson);
-                out.flush();
+                System.out.println("this is the JSON\n" + prettyJson);
+//                out.flush();
             }
         } catch (SQLException ex) {
             Logger.getLogger(getDocList.class.getName()).log(Level.SEVERE, null, ex);
