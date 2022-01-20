@@ -55,15 +55,9 @@ public class Admin extends User{
     }
     
     //Returns all Doctors
-    public ArrayList<Doctor> getAllDoctorsList(){
-        EditDoctorTable edt = new EditDoctorTable();
+    public ArrayList<Doctor> getDoctorList(){
         
         return null;   
     }
-    
-//    public void printDoctorList(){
-//        EditDoctorTable edt = new EditDoctorTable();
-//        
-//    }
     
 }

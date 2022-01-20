@@ -4,9 +4,8 @@ function getDocList(){
 
    var xhttp = new XMLHttpRequest();
    xhttp.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
-//        document.getElementById("demo").innerHTML = this.responseText;
-        let response = JSON.parse(this.responseText);
+      if (this.readyState === 4 && this.status === 200) {
+        var response = JSON.parse(this.responseText);
         console.log("Successful requestoooo\n" + response[0].doctor_id);
         showDoctorsList(response);
        }
@@ -19,9 +18,9 @@ function getDocList(){
 }
 
 function showDoctorsList(response){ 
-  let html_list = document.getElementById("doc_list");
+  var html_list = document.getElementById("doc_list");
   
-  for(let i=0; i < response.length; i++){
+  for(var i=0; i < response.length; i++){
     html_list.innerHTML += "<div>"
     +"Doc_Id<input type='text' id='doc_id' name='doc_id' value='"+ response[i].doctor_id +"' size='3'>"
     +"Doc_username<input type='text' id='doc_username' name='doc_username' size='10' value='"+ response[i].username +"'>"
@@ -55,12 +54,9 @@ function deleteDoctor(doctor_id){
        url: 'DeleteDoctor',
        data: "doctor_id=" + doctor_id,
        success: function(success) {
-           alert("DeleteDoctor Successful id: " +doctor_id);
            //rebuild doctors list
            //reset old list first
-           let html_list = document.getElementById("doc_list");
-           html_list.innerHTML = "";
-           
+           $('#doc_list').empty();
            getDocList();
            return true;
        },

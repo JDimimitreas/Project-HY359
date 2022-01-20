@@ -292,17 +292,7 @@ public class EditDoctorTable {
           
            list.add(dummy);
        }
-       
-//        try {
-//            rs = stm.executeQuery(query);
-//            rs.next();
-////            String json=DB_Connection.getResultsToJSON(rs);
-////            return json;
-//        } catch (Exception e) {
-//            System.err.println("Got an exception! ");
-//            System.err.println(e.getMessage());
-//        }
-       
+   
        stm.close();
        
        return list;
@@ -330,9 +320,7 @@ public class EditDoctorTable {
                 return true;
             }
         
-        } catch (SQLException ex) {
-            Logger.getLogger(EditDoctorTable.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(EditDoctorTable.class.getName()).log(Level.SEVERE, null, ex);
         }
          return false;

@@ -19,13 +19,40 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
     </head>
-    <body
+    <body onload="getDocList()">
+        <!-- JQuery -->
+        <script
+            src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
         <%
-          if(session.getAttribute("username")==null) {
-              response.sendRedirect("login.html");
-          }  
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+            
+            response.setHeader("Pragma", "no-cache");
+            
+            response.setHeader("Expires", "0");
+            
+            if(session.getAttribute("username")==null || session.getAttribute("password")==null) {
+                response.sendRedirect("login.html");
+            }  
         %>
-        Welcome ${username}
+        <div class="topnav">
+            <a class="active" href="#home">Home</a>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+        </div> 
+        <br>
         <h1>Welcome ${username}</h1>
+        <div id="main-container">
+            <div id="doc_list">
+                
+            </div>
+        </div>
+        <form action="Logout">
+            <input type="submit" value="logout">
+        </form>
+        <script src="js/adminPage.js"></script>
     </body>
 </html>
