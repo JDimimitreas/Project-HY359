@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import mainClasses.Doctor;
 import mainClasses.SimpleUser;
 
@@ -35,9 +36,7 @@ public class SignUp extends HttpServlet {
             String username     = request.getParameter("username");
             String email        = request.getParameter("email");
             String password     = request.getParameter("psw");
-            
-            String userType     = request.getParameter("userType");
-            
+            String userType     = request.getParameter("userType");          
             String name         = request.getParameter("name");
             String surname      = request.getParameter("surname");
             String year         = request.getParameter("year");
@@ -48,19 +47,24 @@ public class SignUp extends HttpServlet {
             String country      = request.getParameter("country");
             String city         = request.getParameter("city");
             String address      = request.getParameter("address");
+            String lon          = request.getParameter("lon");
+            String lat          = request.getParameter("lat");
             String phone        = request.getParameter("phone");
             String height       = request.getParameter("height");
             String weight       = request.getParameter("weight");
             String bloodDonor   = request.getParameter("bloodDonor");
             String bloodType    = request.getParameter("bloodType");
 
-            if(userType.equals("typeDefault")) {
+            if(userType.equals("default")) {
                 EditSimpleUserTable eut = new EditSimpleUserTable();
                 SimpleUser su = eut.databaseToSimpleUser(username, password);
                 if(su!=null){
                     response.getWriter().write("User already exists");
                     response.setStatus(409);
                 }else {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", username);
+                    session.setAttribute("password", password);
                     String userJSON = "{\"username\":\"" + username + "\","
                         + "\"email\":\"" + email + "\","
                         + "\"password\":\"" + password + "\","
@@ -72,7 +76,8 @@ public class SignUp extends HttpServlet {
                         + "\"country\":\"" + country + "\","
                         + "\"city\":\"" + city + "\","
                         + "\"address\":\"" + address + "\","
-                        + "\"lat\":\"35.3053121\",\"lon\":\"25.0722869\","
+                        + "\"lat\":\"" + lat + "\","
+                        + "\"lon\":\"" + lon + "\","
                         + "\"telephone\":\"" + phone + "\","
                         + "\"height\":\"" + height + "\","
                         + "\"weight\":\"" + weight + "\","
@@ -89,7 +94,10 @@ public class SignUp extends HttpServlet {
                 if(doc!=null){
                     response.getWriter().write("Doctor already exists");
                     response.setStatus(409);
-                }else {                
+                }else { 
+                    HttpSession session = request.getSession();
+                    session.setAttribute("username", username);
+                    session.setAttribute("password", password);
                     String specialty        = request.getParameter("specialty");
                     String doctor_info      = request.getParameter("doc_text");
                     String jsonDoctor = "{\"username\":\"" + username + "\","
@@ -103,7 +111,8 @@ public class SignUp extends HttpServlet {
                         + "\"country\":\"" + country + "\","
                         + "\"city\":\"" + city + "\","
                         + "\"address\":\"" + address + "\","
-                        + "\"lat\":\"35.3053121\",\"lon\":\"25.0722869\","
+                        + "\"lat\":\"" + lat + "\","
+                        + "\"lon\":\"" + lon + "\","
                         + "\"telephone\":\"" + phone + "\","
                         + "\"height\":\"" + height + "\","
                         + "\"weight\":\"" + weight + "\","
@@ -122,15 +131,6 @@ public class SignUp extends HttpServlet {
         }catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(SignUp.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
     }
 }
 
