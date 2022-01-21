@@ -13,12 +13,24 @@
         <servlet-class>servlets.LogIn</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>Logout</servlet-name>
+        <servlet-class>servlets.Logout</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>getDocList</servlet-name>
         <servlet-class>servlets.getDocList</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteDoctor</servlet-name>
         <servlet-class>servlets.DeleteDoctor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>getRendezvousOnDate</servlet-name>
+        <servlet-class>servlets.GetRandevouzOnDate</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetAllRandevouz</servlet-name>
+        <servlet-class>servlets.GetAllRandevouz</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetUser</servlet-name>
@@ -33,12 +45,24 @@
         <url-pattern>/LogIn</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+        <servlet-name>Logout</servlet-name>
+        <url-pattern>/Logout</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>getDocList</servlet-name>
         <url-pattern>/getDocList</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>DeleteDoctor</servlet-name>
         <url-pattern>/DeleteDoctor</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>getRendezvousOnDate</servlet-name>
+        <url-pattern>/getRendezvousOnDate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetAllRandevouz</servlet-name>
+        <url-pattern>/GetAllRandevouz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
