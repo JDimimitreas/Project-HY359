@@ -4,6 +4,8 @@
  */
 package servlets;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -18,6 +20,11 @@ import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import mainClasses.Randevouz;
+
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -37,27 +44,41 @@ public class GetAllRandevouz extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         try {
             EditRandevouzTable ert = new EditRandevouzTable();
             Randevouz randevouz    = new Randevouz();
+            ArrayList<Randevouz> ran_list = new ArrayList<Randevouz>();
             
-            ArrayList<Randevouz> randevouz_list = new ArrayList<Randevouz>();
-            randevouz_list = ert.databaseToRandevouz();
+            ran_list = ert.databaseToRandevouz();
             
-            for( Randevouz ran : randevouz_list ){
+            // Print all randevouz
+            for( Randevouz ran : ran_list ){
                 System.out.println(ran.getDate_time());
             }
-            // TODO return randevouz_table with jsonFormat back to the javascript request To idio me tous doctors
             
-            
-            
+            // Prepare the json answer
+            if( ran_list.size() > 0 ){
+                GsonBuilder gsonBuilder = new GsonBuilder();
+                Gson gson               = gsonBuilder.create();
+                String JSON_object      = gson.toJson(ran_list);
+                
+                Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
+                String prettyJson = prettyGson.toJson(ran_list);
+                
+                response.setStatus(200);
+                PrintWriter out = response.getWriter();
+                response.setContentType("applicaiton/json");
+                response.setCharacterEncoding("UTF-8");
+                response.getWriter().write(prettyJson);
+                System.out.println("this is the JSON\n" + prettyJson);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(GetAllRandevouz.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(GetAllRandevouz.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
     }
 
     /**

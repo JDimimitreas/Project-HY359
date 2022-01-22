@@ -6,11 +6,7 @@ function getDocList(){
    xhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
         var response = JSON.parse(this.responseText);
-        console.log("Successful requestoooo\n" + response[0].doctor_id);
         showDoctorsList(response);
-       }
-       else{
-           console.log("Nothing");
        }
      };
    xhttp.open("GET", "getDocList");
