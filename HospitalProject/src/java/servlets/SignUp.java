@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import mainClasses.Doctor;
 import mainClasses.SimpleUser;
 
-//@WebServlet("/SignUp")
 public class SignUp extends HttpServlet {
 
     /**
