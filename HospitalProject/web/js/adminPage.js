@@ -38,27 +38,26 @@ function isCertified(response){
 }
 
 function deleteDoctor(doctor_id){
-  console.log("Deleting doctor with id:" + doctor_id);
-    
+    console.log("Deleting doctor with id:" + doctor_id);
     var data = {
         "doctor_id": doctor_id
     };
     console.log(JSON.stringify(data));
     
     $.ajax({
-       type: 'POST',
-       url: 'DeleteDoctor',
-       data: "doctor_id=" + doctor_id,
-       success: function(success) {
+        type: 'POST',
+        url: 'DeleteDoctor',
+        data: "doctor_id=" + doctor_id,
+        success: function(success) {
            //rebuild doctors list
            //reset old list first
            $('#doc_list').empty();
            getDocList();
            return true;
-       },
-       error: function(e) {
+        },
+        error: function(e) {
            console.log("Couldnt delete Doctor with id:" + doctor_id);
            return false;
-       }
+        }
     });
 }
