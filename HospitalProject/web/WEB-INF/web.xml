@@ -18,7 +18,7 @@
     </servlet>
     <servlet>
         <servlet-name>getDocList</servlet-name>
-        <servlet-class>servlets.getDocList</servlet-class>
+        <servlet-class>servlets.GetDocList</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>DeleteDoctor</servlet-name>
@@ -31,6 +31,10 @@
     <servlet>
         <servlet-name>GetAllRandevouz</servlet-name>
         <servlet-class>servlets.GetAllRandevouz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GetSimpleUserList</servlet-name>
+        <servlet-class>servlets.GetSimpleUserList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetUser</servlet-name>
@@ -63,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>GetAllRandevouz</servlet-name>
         <url-pattern>/GetAllRandevouz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GetSimpleUserList</servlet-name>
+        <url-pattern>/GetSimpleUserList</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
