@@ -61,7 +61,7 @@ public class GetSimpleUserList extends HttpServlet {
                 System.out.println("this is the JSON\n" + prettyJson);
             }
         } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(GetDocList.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(getDocList.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
