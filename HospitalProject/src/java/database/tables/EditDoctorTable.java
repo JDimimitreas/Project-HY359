@@ -265,7 +265,6 @@ public class EditDoctorTable {
        
        while(rs.next()){
            Doctor dummy = new Doctor();
-           
            dummy.setUsername(rs.getString("username"));
            dummy.setPassword(rs.getString("password"));
            dummy.setEmail(rs.getString("email"));

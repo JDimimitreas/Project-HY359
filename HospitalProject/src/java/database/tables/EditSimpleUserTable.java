@@ -199,7 +199,6 @@ public class EditSimpleUserTable {
        
        rs = stm.executeQuery(query);
        
-       int i = 0;
        while(rs.next()){
            SimpleUser dummy = new SimpleUser();
            dummy.setUsername(rs.getString("username"));
@@ -222,23 +221,7 @@ public class EditSimpleUserTable {
            dummy.setBloodtype(rs.getString("bloodtype"));
            
            list.add(dummy);
-//           for( int j=0; j<=i; j++) {
-//               System.out.println("Edit.Username: " + list.get(i).getUsername());
-//               System.out.println("Edit.Username: " + list.get(i));
-//           }
-//           System.out.println("Edit.Username: " + list.get(i).getUsername());
-           i++;
        }
-       
-//        try {
-//            rs = stm.executeQuery(query);
-//            rs.next();
-////            String json=DB_Connection.getResultsToJSON(rs);
-////            return json;
-//        } catch (Exception e) {
-//            System.err.println("Got an exception! ");
-//            System.err.println(e.getMessage());
-//        }
        
        stm.close();
        
