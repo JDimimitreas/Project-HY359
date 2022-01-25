@@ -33,17 +33,16 @@
         <servlet-class>servlets.GetAllRandevouz</servlet-class>
     </servlet>
     <servlet>
-<<<<<<< HEAD
         <servlet-name>DeleteRandevouz</servlet-name>
         <servlet-class>servlets.DeleteRandevouz</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UpdateRandevouz</servlet-name>
         <servlet-class>servlets.UpdateRandevouz</servlet-class>
-=======
+    </servlet>
+    <servlet>
         <servlet-name>GetSimpleUserList</servlet-name>
-        <servlet-class>servlets.GetSimpleUserList</servlet-class>
->>>>>>> 8154b351cf7d28854328c6c293bbfceab0dc37da
+        <servlet-class>GetSimpleUserList</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>GetUser</servlet-name>
@@ -78,17 +77,16 @@
         <url-pattern>/GetAllRandevouz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>DeleteRandevouz</servlet-name>
         <url-pattern>/DeleteRandevouz</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UpdateRandevouz</servlet-name>
         <url-pattern>/UpdateRandevouz</url-pattern>
-=======
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>GetSimpleUserList</servlet-name>
         <url-pattern>/GetSimpleUserList</url-pattern>
->>>>>>> 8154b351cf7d28854328c6c293bbfceab0dc37da
     </servlet-mapping>
     <session-config>
         <session-timeout>
