@@ -10,13 +10,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h3>New Rendevouz</h3>
+        <h3>View Rendevouz</h3>
         <div id="pick_date">
             <h3>Pick a Date</h3>
-             <input type="date" id="date_data" onload="getCurrentDate()"> <br> 
-<!--            <time datetime="2021-10-29 15:00:00">-->
-            
+            <input type="date" id="date_data" onload="getCurrentDate()"> <br> 
             <button onclick="step1()">Next</button>  <!-- hide it -->
+            <br>
+            Or simply <button onclick="getAllRandevouz()" id='getAllRandevouzBtn'>getAllRandevouz</button>
+        </div>
+        <div id='randevouz_list'>
         </div>
     </body>
     <script src="js/newRendezvous.js"></script>

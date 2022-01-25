@@ -32,6 +32,14 @@
         <servlet-name>GetAllRandevouz</servlet-name>
         <servlet-class>servlets.GetAllRandevouz</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteRandevouz</servlet-name>
+        <servlet-class>servlets.DeleteRandevouz</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UpdateRandevouz</servlet-name>
+        <servlet-class>servlets.UpdateRandevouz</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetUser</servlet-name>
         <url-pattern>/GetUser</url-pattern>
@@ -63,6 +71,14 @@
     <servlet-mapping>
         <servlet-name>GetAllRandevouz</servlet-name>
         <url-pattern>/GetAllRandevouz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteRandevouz</servlet-name>
+        <url-pattern>/DeleteRandevouz</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateRandevouz</servlet-name>
+        <url-pattern>/UpdateRandevouz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

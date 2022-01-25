@@ -1,18 +1,6 @@
 function getAllRandevouz(){
     console.log('GetAllRandevouz\n');
 
-    // $.ajax({
-    //     type: "GET",
-    //     url: "GetAllRandevouz",
-    //     dataType: "application/json",
-    //     success: function (response) {
-    //         console.log("GetAllRandevouz was successfull");
-    //     },
-    //     error: function(error) {
-    //         console.log('GetALlRandevouz failed');
-    //     }
-    // });
-
     //vanilla JS
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
