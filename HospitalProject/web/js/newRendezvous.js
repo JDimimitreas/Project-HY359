@@ -129,3 +129,60 @@ function getAllRandevouz() {
     //The button shall be clicked once only
     document.getElementById("getAllRandevouzBtn").onclick = null;
 }
+
+function newRandevouz(){
+    var doctor_id = document.getElementById('new_doctor_id').value;
+    var user_id   = document.getElementById('new_user_id').value;
+    var date      = document.getElementById('new_date').value;
+    var hours     = document.getElementById('new_hours').value;
+    var minutes   = document.getElementById('new_minutes').value;
+    var price     = document.getElementById("new_price").value;
+    var doctor_info = document.getElementById('new_doc_info').value;
+    var status    = document.getElementById('new_status').value;
+    var user_info = document.getElementById('new_user_info').value;
+
+    var data = 'doctor_id=' + doctor_id + '&user_id=' + user_id + 
+                '&date=' + date + '&hours=' + hours + '&minutes=' + minutes;
+
+//    alert('Data: ' + data);
+    
+    let doctor = {
+        doctor_id: doctor_id,
+        user_id: user_id,
+        date: date,
+        hours: hours,
+        minutes: minutes,
+        price: price, 
+        status: status,
+        doctor_info: doctor_info,
+        user_info: user_info
+    };
+    
+//    let json_doc = JSON.parse(doctor);
+    
+    console.log( Object.values(doctor) );
+    console.log("The json: " + JSON.stringify(doctor) );
+    
+    // now the request
+    $.ajax({
+       type: 'POST',
+       url: 'NewRandevouz',
+       data: JSON.stringify(doctor),
+       contentType: 'application/json',
+       dataType: 'text',
+       success: function(succ) {
+           console.log("NewRandevouz Request was successful!!");
+           
+           alert("NewRandevouz: " + succ);
+           
+       },
+       error: function(e){
+           console.log("NewRandevouz Request was unsuccessful...");
+           let response = this.responseText;
+           alert("NewRandevouz: " + e);
+       }
+    });
+  
+    
+
+}

@@ -20,6 +20,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         </div>
         <div id='randevouz_list'>
         </div>
+
+        <h3>New Randevouz</h3>
+        <form id="newRandevouzForm" onsubmit="return false;">
+            Doctor ID <input type="text" id="new_doctor_id" name="new_doctor_id"><br>
+            User ID <input type="text" id="new_user_id" name="new_user_id"> <br>
+            Date <input type="date" id='new_date' name="new_date"><br>
+            Time: Hours <select name="new_hours" id="new_hours">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="15">15</option>
+                <option value="16">16</option>
+                <option value="17">17</option>
+                <option value="18">18</option>
+                <option value="19">19</option>
+                <option value="20">20</option>
+                <option value="21">21</option>
+                <option value="22">22</option>
+            </select>
+            : Minutes <select name="new_minutes" id="new_minutes">
+                <option value="00">00</option>
+                <option value="30">30</option>
+            </select><br>
+            Price <input type="text" id="new_price" name="new_price">
+            Doctor Info <input type="text" maxlength="500" id="new_doc_info" name="new_doc_info"><br>
+            User Info <input type="text" maxlength="500" id="new_user_info" name="new_user_info"><br>
+            Status <input type="text" maxlength="15" id="new_status" name="new_status"><br>
+            <input type="submit" value="newRandevouz" onclick="newRandevouz()">
+            <!-- <button onclick="newRandevouz()" value="newRandevouz"></button> -->
+        </form>
+
     </body>
     <script src="js/newRendezvous.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

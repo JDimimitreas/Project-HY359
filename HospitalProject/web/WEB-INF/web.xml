@@ -44,6 +44,10 @@
         <servlet-name>GetSimpleUserList</servlet-name>
         <servlet-class>GetSimpleUserList</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>NewRandevouz</servlet-name>
+        <servlet-class>servlets.NewRandevouz</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>GetUser</servlet-name>
         <url-pattern>/GetUser</url-pattern>
@@ -87,6 +91,10 @@
     <servlet-mapping>
         <servlet-name>GetSimpleUserList</servlet-name>
         <url-pattern>/GetSimpleUserList</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>NewRandevouz</servlet-name>
+        <url-pattern>/NewRandevouz</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
