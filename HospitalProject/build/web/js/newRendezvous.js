@@ -145,6 +145,7 @@ function newRandevouz(){
                 '&date=' + date + '&hours=' + hours + '&minutes=' + minutes;
 
 //    alert('Data: ' + data);
+
     
     let doctor = {
         doctor_id: doctor_id,

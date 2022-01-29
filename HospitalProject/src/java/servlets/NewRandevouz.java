@@ -100,8 +100,42 @@ public class NewRandevouz extends HttpServlet {
                 
                 //First setUp the randevouz
                 Randevouz ran = new Randevouz();
-//                ran.setDoctor_id( jObj.get );
+                String date_time = jObj.getString("date");
+                date_time += " " + jObj.getString("hours") + ":" + jObj.getString("minutes");
+                date_time += ":00";
+                System.out.println("date_time is: " + date_time);
                 
+                
+//                int doctor_id = jObj.getInt("doctor_id");
+                int doctor_id = Integer.parseInt( jObj.getString("doctor_id") );
+                
+                System.out.println( doctor_id );
+
+                ran.setDoctor_id( jObj.getInt("doctor_id") );
+                ran.setUser_id( jObj.getInt("user_id") );
+                ran.setPrice( jObj.getInt("price") );
+                ran.setDate_time(date_time);
+                ran.setDoctor_info( jObj.getString("doctor_info"));
+                ran.setUser_info(jObj.getString("user_info"));
+                ran.setStatus( jObj.getString("status"));
+                
+                String insertQuery = "INSERT INTO "
+                    + " randevouz (doctor_id,user_id,date_time,price,doctor_info,user_info,status)"
+                    + " VALUES ("
+                    + "'" + ran.getDoctor_id() + "',"
+                    + "'" + ran.getUser_id() + "',"
+                    + "'" + ran.getDate_time() + "',"
+                    + "'" + ran.getPrice() + "',"
+                    + "'" + ran.getDoctor_info() + "',"
+                    + "'" + ran.getUser_info() + "',"
+                    + "'" + ran.getStatus() + "'"
+                    + ")";
+                
+                System.out.println("insertQuery: "+ insertQuery);
+                
+                ert.createNewRandevouz(ran);
+                
+                out.println("New randevouz is added");
                 
             } else {
                 // rs is not empty we cant enter the new randevouz, display message
